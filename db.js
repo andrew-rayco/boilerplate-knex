@@ -3,8 +3,9 @@ var config = require('./knexfile')[environment]
 var connection = require('knex')(config)
 
 module.exports = {
-  getUser: getUser,
-  getUsers: getUsers
+  getUser,
+  getUsers,
+  addUser
 }
 
 function getUsers (testDb) {
@@ -16,4 +17,9 @@ function getUsers (testDb) {
 function getUser (id, testDb) {
   var db = testDb || connection
   return db('users').where('id', id)
+}
+
+function addUser (user, testDb) {
+  var db = testDb || connection
+  return db('users').insert(user)
 }

@@ -3,15 +3,32 @@ var express = require('express')
 var db = require('../db')
 
 module.exports = {
-  get: get
+  get,
+  add,
+  save
 }
 
 function get (req, res) {
   db.getUsers()
-    .then(function (users) {
+    .then(users => {
       res.render('index', { users: users })
     })
-    .catch(function (err) {
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+}
+
+function add (req, res) {
+  res.render('add')
+}
+
+function save (req, res) {
+  const user = req.body
+  db.addUser(user)
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 }
