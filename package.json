@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "knex": "knex",
-    "dev": "nodemon server/index",
+    "dev": "nodemon server/index & webpack --watch",
     "start": "node server/index",
     "debug": "node --inspect --debug-brk server/index.js",
     "test": "ava"
@@ -18,6 +18,12 @@
     "eda",
     "boilerplate"
   ],
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -26,10 +32,18 @@
   "homepage": "https://github.com/dev-academy-challenges/boilerplate-knex#readme",
   "devDependencies": {
     "ava": "^0.18.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "cheerio": "^0.22.0",
     "nodemon": "^1.11.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "sqlite3": "^3.1.8",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
