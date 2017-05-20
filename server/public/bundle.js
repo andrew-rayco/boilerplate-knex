@@ -87,7 +87,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, { users: window.users }), document.getElementById('app'));
 
 /***/ }),
 /* 1 */
@@ -22054,7 +22054,26 @@ var App = function App(prop) {
   return _react2.default.createElement(
     'div',
     null,
-    'Hello world'
+    _react2.default.createElement(
+      'div',
+      null,
+      'Hello world'
+    ),
+    prop.users.map(function (u, i) {
+      return _react2.default.createElement(User, { user: u, key: i });
+    })
+  );
+};
+
+var User = function User(_ref) {
+  var user = _ref.user;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'user' },
+    user.name,
+    ' : ',
+    user.email
   );
 };
 
