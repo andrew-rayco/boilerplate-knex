@@ -7,7 +7,7 @@ var test = require('ava')
 var configureDatabase = require('./helpers/database-config')
 configureDatabase(test)
 
-var db = require('../db')
+var db = require('../../server/db')
 
 test('getUsers gets all users', function (t) {
   // One for each letter of the alphabet!
